@@ -15,7 +15,7 @@
 			"$ref": "#/$defs/Generic.Identifier"
 		},
 		"_type": {
-			"const": "TestReport"
+			"const": "TestingProject"
 		},
 		"Client": {
 			"$ref": "#/$defs/Generic.Location"
@@ -84,949 +84,144 @@
 		"TestSeries"
 	],
 	"$defs": {
-		"3-1_Tensile_Certificate.ConsolidatedCharacteristicValue": {
-			"type": "object",
-			"minItems": 4,
-			"maxItems": 4,
-			"uniqueItems": true,
-			"items": {
-				"prefixItems": [
-					{
-						"$ref": "#/$defs/3-1_Certificate.YieldStrength"
+		"3-1_Certificate_Composition.TestExecution": {
+			"additionalProperties": false,
+			"properties": {
+				"_id": {
+					"$ref": "#/$defs/Generic.Identifier"
+				},
+				"_type": {
+					"const": "TestExecution"
+				},
+				"Designation": {
+					"$ref": "#/$defs/Generic.RestrictedString"
+				},
+				"Numerator": {
+					"minimum": 1,
+					"type": "integer"
+				},
+				"Tester": {
+					"$ref": "#/$defs/Generic.Person",
+					"description": "The person who executed the test."
+				},
+				"StartTime": {
+					"$ref": "#/$defs/Generic.Date",
+					"description": "The date the execution of the test began."
+				},
+				"MeasurementSystems": {
+					"items": {
+						"$ref": "#/$defs/Generic.MeasurementSystem"
 					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.TensileStrength"
+					"type": "array",
+					"minItems": 1
+				},
+				"RawData": {
+					"items": {
+						"$ref": "#/$defs/Generic.InformationSet"
 					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.ElongationA50"
+					"type": "array",
+					"minItems": 1
+				},
+				"SingleResults": {
+					"items": {
+						"$ref": "#/$defs/3-1_Composition_Certificate.InformationSet"
 					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.UniformElongation"
+					"type": "array",
+					"minItems": 1
+				},
+				"Specimen": {	
+					"$ref": "#/$defs/Generic.Specimen"
+				},
+				"TestParameters": {
+					"$ref": "#/$defs/Generic.InformationSet"
+				}
+			},
+			"required": [
+				"_id",
+				"_type",
+				"Designation",
+				"Numerator",
+				"MeasurementSystems",
+				"SingleResults",
+				"Specimen"
+			],
+			"type": "object"
+		},
+		"3-1_Certificate_Tensile.TestExecution": {
+			"additionalProperties": false,
+			"properties": {
+				"_id": {
+					"$ref": "#/$defs/Generic.Identifier"
+				},
+				"_type": {
+					"const": "TestExecution"
+				},
+				"Designation": {
+					"$ref": "#/$defs/Generic.RestrictedString"
+				},
+				"Numerator": {
+					"minimum": 1,
+					"type": "integer"
+				},
+				"Tester": {
+					"$ref": "#/$defs/Generic.Person",
+					"description": "The person who executed the test."
+				},
+				"StartTime": {
+					"$ref": "#/$defs/Generic.Date",
+					"description": "The date the execution of the test began."
+				},
+				"MeasurementSystems": {
+					"items": {
+						"$ref": "#/$defs/Generic.MeasurementSystem"
+					},
+					"type": "array",
+					"minItems": 1
+				},
+				"RawData": {
+					"items": {
+						"$ref": "#/$defs/Generic.InformationSet"
+					},
+					"type": "array",
+					"minItems": 1
+				},
+				"SingleResults": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"uniqueItems": true,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "#/$defs/3-1_Certificate.YieldStrength"
+							},
+							{
+								"$ref": "#/$defs/3-1_Certificate.TensileStrength"
+							},
+							{
+								"$ref": "#/$defs/3-1_Certificate.ElongationA50"
+							},
+							{
+								"$ref": "#/$defs/3-1_Certificate.UniformElongation"
+							}
+						]
 					}
-				]
-			}
-		},
-		"3-1_Composition_Certificate.ConsolidatedCharacteristicValue": {
-			"type": "object",
-			"minItems": 3,
-			"uniqueItems": true,
-			"items": {
-				"prefixItems": [
-					{
-						"$ref": "#/$defs/3-1_Certificate.Carbon"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Silicon"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Manganese"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Phosphorus"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Sulfur"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Chromium"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Molybdenum"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Nickel"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Copper"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Nitrogen"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Aluminum"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Titanium"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Vanadium"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Niobium"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Boron"
-					}
-				]
-			}
-		},
-		"3-1_Tensile_Certificate.SingleResult": {
-			"type": "array",
-			"minItems": 4,
-			"maxItems": 4,
-			"uniqueItems": true,
-			"items": {
-				"prefixItems": [
-					{
-						"$ref": "#/$defs/3-1_Certificate.YieldStrength"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.TensileStrength"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.ElongationA50"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.UniformElongation"
-					}
-				]
-			}
-		},
-		"3-1_Composition_Certificate.SingleResult": {
-			"type": "array",
-			"minItems": 3,
-			"uniqueItems": true,
-			"items": {
-				"prefixItems": [
-					{
-						"$ref": "#/$defs/3-1_Certificate.Carbon"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Silicon"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Manganese"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Phosphorus"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Sulfur"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Chromium"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Molybdenum"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Nickel"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Copper"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Nitrogen"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Aluminum"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Titanium"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Vanadium"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Niobium"
-					},
-					{
-						"$ref": "#/$defs/3-1_Certificate.Boron"
-					}
-				]
-			}
-		},
-		"3-1_Certificate.Carbon": {
-			"properties": {
-				"Property": {
-					"const": "C"
 				},
-				"Unit": {
-					"const": "%"
+				"Specimen": {	
+					"$ref": "#/$defs/Generic.Specimen"
 				},
-				"Symbol": {
-					"const": "C"
-				},
-				"Value": {
-					"description": "Carbon content of the alloy",
-					"maximum": 2.5,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
+				"TestParameters": {
+					"$ref": "#/$defs/Generic.InformationSet"
 				}
 			},
 			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Silicon": {
-			"properties": {
-				"Property": {
-					"const": "Si"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "Si"
-				},
-				"Value": {
-					"description": "Silicon content of the alloy",
-					"maximum": 8.0,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Manganese": {
-			"properties": {
-				"Property": {
-					"const": "Mn"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "Mn"
-				},
-				"Value": {
-					"description": "Manganese content of the alloy",
-					"maximum": 26.0,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Phosphorus": {
-			"properties": {
-				"Property": {
-					"const": "P"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "P"
-				},
-				"Value": {
-					"description": "Phosphorus content of the alloy",
-					"maximum": 0.35,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Sulfur": {
-			"properties": {
-				"Property": {
-					"const": "S"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "S"
-				},
-				"Value": {
-					"description": "Sulfur content of the alloy",
-					"maximum": 0.4,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Chromium": {
-			"properties": {
-				"Property": {
-					"const": "Cr"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "Cr"
-				},
-				"Value": {
-					"description": "Chromium content of the alloy",
-					"maximum": 30.0,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Molybdenum": {
-			"properties": {
-				"Property": {
-					"const": "Mo"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "Mo"
-				},
-				"Value": {
-					"description": "Molybdenum content of the alloy",
-					"maximum": 10.0,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Nickel": {
-			"properties": {
-				"Property": {
-					"const": "Ni"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "Ni"
-				},
-				"Value": {
-					"description": "Nickel content of the alloy",
-					"maximum": 40.0,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Copper": {
-			"properties": {
-				"Property": {
-					"const": "Cu"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "Cu"
-				},
-				"Value": {
-					"description": "Copper content of the alloy",
-					"maximum": 6.0,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Aluminum": {
-			"properties": {
-				"Property": {
-					"const": "Al"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "Al"
-				},
-				"Value": {
-					"description": "Aluminum content of the alloy",
-					"maximum": 10.0,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Titanium": {
-			"properties": {
-				"Property": {
-					"const": "Ti"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "Ti"
-				},
-				"Value": {
-					"description": "Titanium content of the alloy",
-					"maximum": 5.0,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Niobium": {
-			"properties": {
-				"Property": {
-					"const": "Nb"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "Nb"
-				},
-				"Value": {
-					"description": "Niobium content of the alloy",
-					"maximum": 5.5,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Boron": {
-			"properties": {
-				"Property": {
-					"const": "B"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "B"
-				},
-				"Value": {
-					"description": "Boron content of the alloy",
-					"maximum": 0.1,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Vanadium": {
-			"properties": {
-				"Property": {
-					"const": "V"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "V"
-				},
-				"Value": {
-					"description": "Vanadium content of the alloy",
-					"maximum": 8.5,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
-			],
-			"type": "object"
-		},
-		"3-1_Certificate.Nitrogen": {
-			"properties": {
-				"Property": {
-					"const": "N"
-				},
-				"Unit": {
-					"const": "%"
-				},
-				"Symbol": {
-					"const": "N"
-				},
-				"Value": {
-					"description": "Nitrogen content of the alloy",
-					"maximum": 0.5,
-					"minimum": 0,
-					"type": "number"
-				},
-				"Rounding": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"RoundingAccuracy": {
-					"type": "number"
-				},
-				"_id": {
-					"$ref": "#/$defs/Generic.Identifier"
-				},
-				"_type": {
-					"oneOf": [
-						{
-							"const": "ConsolidatedCharacteristicValue"
-						},
-						{
-							"const": "SingleResult"
-						}
-					],
-					"type": "string"
-				},
-				"Aggregation": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Comment": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"CriterionType": {
-					"$ref": "#/$defs/Generic.RestrictedString"
-				}
-			},
-			"required": [
-				"Property",
-				"Value"
+				"_id",
+				"_type",
+				"Designation",
+				"Numerator",
+				"MeasurementSystems",
+				"SingleResults",
+				"Specimen"
 			],
 			"type": "object"
 		},
@@ -1382,7 +577,7 @@
 			"minimum": 0,
 			"type": "number"
 		},
-		"3-1_Certificate.ArraySpec": {
+		"3-1_Tensile_Certificate.ArraySpec": {
 			"description": "Specification of array structure for tensile testing data.",
 			"maxItems": 6,
 			"minItems": 6,
@@ -1408,7 +603,7 @@
 			],
 			"type": "object"
 		},
-		"3-1_Certificate.ArrayValue": {
+		"3-1_Tensile_Certificate.ArrayValue": {
 			"description": "Values corresponding to the tensile testing data.",
 			"items": {
 				"maxItems": 6,
@@ -1439,7 +634,168 @@
 			"minItems": 1,
 			"type": "array"
 		},
-		"3-1_Certificate.InformationSet": {
+		"3-1_Composition_Certificate.ArraySpec": {
+			"description": "Specification of array structure for composition testing data.",
+			"oneOf": [
+				{
+					"$ref": "#/$defs/3-1_Composition_Certificate.Substance"
+				},
+				{
+					"$ref": "#/$defs/3-1_Composition_Certificate.SubstanceCAS"
+				},
+				{
+						"$ref": "#/$defs/3-1_Composition_Certificate.Fraction"
+				}
+			],
+			"type": "object"
+		},
+		"3-1_Composition_Certificate.ArrayValue": {
+			"description": "Values corresponding to the composition testing data.",
+			"items": {
+				"oneOf": [
+					{
+						"$ref": "#/$defs/3-1_Composition_Certificate.SubstanceValue"
+					},
+					{
+						"$ref": "#/$defs/3-1_Composition_Certificate.SubstanceCASValue"
+					},
+					{
+						"$ref": "#/$defs/3-1_Composition_Certificate.FractionValue"
+					}
+				]
+			},
+			"maxItems": 3,
+			"minItems": 3,
+			"type": "array"
+		},
+		"3-1_Composition_Certificate.ArrayValueTargetValues": {
+			"description": "Values corresponding to the composition testing data for target values.",
+			"items": {
+				"oneOf": [
+					{
+						"$ref": "#/$defs/3-1_Composition_Certificate.SubstanceValue"
+					},
+					{
+						"$ref": "#/$defs/3-1_Composition_Certificate.SubstanceCASValue"
+					},
+					{
+						"$ref": "#/$defs/3-1_Composition_Certificate.FractionValueTargetValues"
+					}
+				]
+			},
+			"maxItems": 3,
+			"minItems": 3,
+			"type": "array"
+		},
+		"3-1_Composition_Certificate.Substance": {
+		"properties": {
+				"Property": {
+					"const": "Substance"
+				}
+			},
+			"required": [
+				"Property"
+			],
+			"type": "object"
+		},
+		"3-1_Composition_Certificate.SubstanceValue": {
+			"description": "Substance Name",
+			"type": "string",
+			"enum": [
+				"Si",
+				"Mn",
+				"P",
+				"S",
+				"Cr",
+				"Mo",
+				"Ni",
+				"Cu",
+				"Al",
+				"Ti",
+				"Nb",
+				"V",
+				"W",
+				"Co",
+				"B",
+				"Y",	
+				"Zr",	
+				"Sn",
+				"Sb",
+				"Ce",
+				"Hf",
+				"Ta",
+				"Pb",
+				"Mg",
+				"Ca",
+				"Se",
+				"O",
+				"N",
+				"H",
+				"C"
+			]
+		},
+		"3-1_Composition_Certificate.SubstanceCAS": {
+		"properties": {
+				"Property": {
+					"const": "Substance CAS"
+				}
+			},
+			"required": [
+				"Property"
+			],
+			"type": "object"
+		},
+		"3-1_Composition_Certificate.SubstanceCASValue": {
+			"description": "Substance CAS",
+			"type": "string",
+			"pattern": "^\\d{2,6}-\\d{2}-\\d$"
+		},
+		"3-1_Composition_Certificate.Fraction": {
+			"properties": {
+				"Property": {
+					"const": "Fraction"
+				},
+				"Unit": {
+					"const": "%"
+				}
+			},
+			"required": [
+				"Property",
+				"Unit"
+			],
+			"type": "object"
+		},
+		"3-1_Composition_Certificate.FractionValue": {
+			"description": "Fraction value in percent with precision to 2 decimal places",
+			"maximum": 100,
+			"minimum": 0,
+			"multipleOf": 0.0001,
+			"type": "number"
+		},
+		"3-1_Composition_Certificate.FractionValueTargetValues": {
+			"properties": {
+				"maxValue": {
+					"description": "Fraction value in percent with precision to 2 decimal places",
+					"maximum": 100,
+					"minimum": 0,
+					"multipleOf": 0.0001,
+					"type": "number"
+				},
+				"minValue": {
+					"description": "Fraction value in percent with precision to 2 decimal places",
+					"maximum": 100,
+					"minimum": 0,
+					"multipleOf": 0.0001,
+					"type": "number"
+				}
+			},
+			"required": [
+				"maxValue",
+				"minValue"
+			],
+			"type": "object"
+		},
+		"3-1_Tensile_Certificate.InformationSet": {
 			"additionalProperties": false,
 			"anyOf": [
 				{
@@ -1463,14 +819,14 @@
 				},
 				"ArraySpec": {
 					"items": {
-						"$ref": "#/$defs/3-1_Certificate.ArraySpec"
+						"$ref": "#/$defs/3-1_Tensile_Certificate.ArraySpec"
 					},
 					"minItems": 1,
 					"type": "array"
 				},
 				"ArrayValue": {
 					"items": {
-						"$ref": "#/$defs/3-1_Certificate.ArrayValue"
+						"$ref": "#/$defs/3-1_Tensile_Certificate.ArrayValue"
 					},
 					"minItems": 1,
 					"type": "array"
@@ -1553,13 +909,52 @@
 				},
 				"Executions": {
 					"items": {
-						"$ref": "#/$defs/3-1_Certificate.TestExecution"
+						"$ref": "#/$defs/3-1_Certificate_Tensile.TestExecution"
 					},
 					"type": "array"
 				},
 				"ConsolidatedCharacteristicValues": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"uniqueItems": true,
 					"items": {
-						"$ref": "#/$defs/3-1_Tensile_Certificate.ConsolidatedCharacteristicValue"
+						"oneOf": [
+							{
+								"$ref": "#/$defs/3-1_Certificate.YieldStrength"
+							},
+							{
+								"$ref": "#/$defs/3-1_Certificate.TensileStrength"
+							},
+							{
+								"$ref": "#/$defs/3-1_Certificate.ElongationA50"
+							},
+							{
+								"$ref": "#/$defs/3-1_Certificate.UniformElongation"
+							}
+						]
+					}
+				},
+				"TargetCharacteristicValues": {
+				"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"uniqueItems": true,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "#/$defs/3-1_Certificate.YieldStrength"
+							},
+							{
+								"$ref": "#/$defs/3-1_Certificate.TensileStrength"
+							},
+							{
+								"$ref": "#/$defs/3-1_Certificate.ElongationA50"
+							},
+							{
+								"$ref": "#/$defs/3-1_Certificate.UniformElongation"
+							}
+						]
 					}
 				}
 			},
@@ -1633,14 +1028,21 @@
 				},
 				"Executions": {
 					"items": {
-						"$ref": "#/$defs/3-1_Certificate.TestExecution"
+						"$ref": "#/$defs/3-1_Certificate_Composition.TestExecution"
 					},
 					"type": "array"
 				},
 				"ConsolidatedCharacteristicValues": {
 					"items": {
-						"$ref": "#/$defs/3-1_Composition_Certificate.ConsolidatedCharacteristicValue"
-					}
+						"$ref": "#/$defs/3-1_Composition_Certificate.InformationSet"
+					},
+					"type": "array"
+				},
+				"TargetCharacteristicValues": {
+					"items": {
+						"$ref": "#/$defs/3-1_Composition_Certificate.TargetValuesInformationSet"
+					},
+					"type": "array"
 				}
 			},
 			"required": [
@@ -1655,114 +1057,131 @@
 			],
 			"type": "object"
 		},
-		"3-1_Certificate.TestExecution": {
+		"3-1_Composition_Certificate.InformationSet": {
 			"additionalProperties": false,
 			"properties": {
 				"_id": {
 					"$ref": "#/$defs/Generic.Identifier"
 				},
 				"_type": {
-					"const": "TestExecution"
+					"const": "InformationSet"
+				},
+				"ArraySpec": {
+					"items": {
+						"$ref": "#/$defs/3-1_Composition_Certificate.ArraySpec"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"ArrayValue": {
+					"items": {
+						"$ref": "#/$defs/3-1_Composition_Certificate.ArrayValue"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"Attachment": {
+					"$ref": "#/$defs/Generic.Attachment"
+				},
+				"Attributes": {
+					"items": {
+						"$ref": "#/$defs/Generic.InformationPoint",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"Comment": {
+					"$ref": "#/$defs/Generic.LongString"
 				},
 				"Designation": {
 					"$ref": "#/$defs/Generic.RestrictedString"
-				},
-				"Numerator": {
-					"minimum": 1,
-					"type": "integer"
-				},
-				"Tester": {
-					"$ref": "#/$defs/Generic.Person",
-					"description": "The person who executed the test."
-				},
-				"StartTime": {
-					"$ref": "#/$defs/Generic.Date",
-					"description": "The date the execution of the test began."
-				},
-				"MeasurementSystems": {
-					"items": {
-						"$ref": "#/$defs/Generic.MeasurementSystem"
-					},
-					"type": "array",
-					"minItems": 1
-				},
-				"RawData": {
-					"items": {
-						"$ref": "#/$defs/Generic.InformationSet"
-					},
-					"type": "array",
-					"minItems": 1
-				},
-				"SingleResults": {
-					"anyOf": [
-						{
-							"$ref": "#/$defs/3-1_Tensile_Certificate.SingleResult"
-						},
-						{
-							"$ref": "#/$defs/3-1_Composition_Certificate.SingleResult"
-						}
-					]
-				},
-				"Specimen": {
-					"$ref": "#/$defs/Generic.Specimen"
-				},
-				"TestParameters": {
-					"$ref": "#/$defs/Generic.InformationSet"
 				}
 			},
+			"type": "object",
 			"required": [
-				"_id",
-				"_type",
-				"Designation",
-				"Numerator",
-				"MeasurementSystems",
-				"SingleResults",
-				"Specimen"
+				"ArraySpec",
+				"ArrayValue"
+			]
+		},
+		"3-1_Composition_Certificate.TargetValuesInformationSet": {
+			"additionalProperties": false,
+			"anyOf": [
+				{
+					"required": [
+						"Attributes"
+					]
+				},
+				{
+					"required": [
+						"ArraySpec",
+						"ArrayValue"
+					]
+				}
 			],
+			"properties": {
+				"_id": {
+					"$ref": "#/$defs/Generic.Identifier"
+				},
+				"_type": {
+					"const": "InformationSet"
+				},
+				"ArraySpec": {
+					"items": {
+						"$ref": "#/$defs/3-1_Composition_Certificate.ArraySpec"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"ArrayValue": {
+					"items": {
+						"$ref": "#/$defs/3-1_Composition_Certificate.ArrayValueTargetValues"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"Attachment": {
+					"$ref": "#/$defs/Generic.Attachment"
+				},
+				"Attributes": {
+					"items": {
+						"$ref": "#/$defs/Generic.InformationPoint",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"Comment": {
+					"$ref": "#/$defs/Generic.LongString"
+				},
+				"Designation": {
+					"$ref": "#/$defs/Generic.RestrictedString"
+				}
+			},
 			"type": "object"
 		},
-		"3-1_Certificate.BranchingTestSeries": {
+		"3-1_Certificate.BranchingTestSeries": 	{
 			"type": "object",
 			"if": {
 				"properties": {
-					"Specification": {
-						"type": "object",
-						"properties": {
-							"Type": {
-								"const": "DIN",
-								"type": "string"
-							},
-							"Number": {
-								"const": "51008-1",
-								"type": "string"
-							}
-						}
+					"TestType": {
+						"const": "Optische Emmissions Spektralanalyse"
 					}
 				}
 			},
 			"then": {
-				"$ref": "#/$defs/3-1_Tensile_Certificate.TestSeries"
+				"$ref": "#/$defs/3-1_Composition_Certificate.TestSeries"
 			},
 			"else": {
 				"if": {
-					"properties": {
-						"Specification": {
-							"type": "object",
-							"properties": {
-								"Type": {
-									"const": "ISO",
-									"type": "string"
-								},
-								"Number": {
-									"const": "6892-1",
-									"type": "string"
-								}
-							}
+					"properties": { 
+					"TestType": {
+							"const": "Method A"
 						}
 					}
 				},
 				"then": {
-					"$ref": "#/$defs/3-1_Composition_Certificate.TestSeries"
+					"$ref": "#/$defs/3-1_Tensile_Certificate.TestSeries"
 				},
 				"else": {
 					"$ref": "#/$defs/Generic.TestSeries"
@@ -2243,13 +1662,6 @@
 					]
 				}
 			],
-			"if": {
-				"properties": {
-					"Designation": {
-						"const": "Stress-strain curve"
-					}
-				}
-			},
 			"properties": {
 				"_id": {
 					"$ref": "#/$defs/Generic.Identifier"
@@ -2288,9 +1700,6 @@
 				"Designation": {
 					"$ref": "#/$defs/Generic.RestrictedString"
 				}
-			},
-			"then": {
-				"$ref": "#/$defs/3-1_Certificate.InformationSet"
 			},
 			"type": "object"
 		},
