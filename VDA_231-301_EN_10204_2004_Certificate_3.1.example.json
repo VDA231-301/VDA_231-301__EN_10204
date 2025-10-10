@@ -19,10 +19,10 @@
     "Name": "Firma xy"
   },
   "ClientOrderNumber": "C123456 - 3.1",
-  "ComponentDefinitions": [
+  "ComponentMasters": [
     {
       "_id": "a01543d7-aa5a-4f28-87ac-53e92c6aeff9",
-      "_type": "ComponentDefinition",
+      "_type": "ComponentMaster",
       "Designation": "Door beam",
       "MaterialGroup": "Soft deep-drawing steel",
       "MaterialName": "1.0335 - DD13",
@@ -129,17 +129,11 @@
       "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
       "_type": "TestSeries",
       "Comment": "Text",
-      "ComponentDefinitionID": "a01543d7-aa5a-4f28-87ac-53e92c6aeff9",
+      "ComponentMasterID": "a01543d7-aa5a-4f28-87ac-53e92c6aeff9",
       "ConsolidatedCharacteristicValues": {
         "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
         "_type": "InformationSet",
         "Designation": "OES",
-        "Attributes": [
-          {
-            "Property": "ComponentDefinitionID",
-            "Value": "a01543d7-aa5a-4f28-87ac-53e92c6aeff9"
-          }
-        ],
         "ArraySpec": [
           {
             "Property": "Substance"
@@ -603,7 +597,7 @@
           "Numerator": 2,
           "Designation": "Optische Emmissions Spektralanalyse",
           "SingleResults": {
-            "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
+            "_id": "38f25acf-2d29-4ca9-b742-650578a02761",
             "_type": "InformationSet",
             "Designation": "OES",
             "ArraySpec": [
@@ -1211,21 +1205,25 @@
       "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
       "_type": "TestSeries",
       "Comment": "Text",
-      "ComponentDefinitionID": "a01543d7-aa5a-4f28-87ac-53e92c6aeff9",
+      "ComponentMasterID": "a01543d7-aa5a-4f28-87ac-53e92c6aeff9",
       "ConsolidatedCharacteristicValues": [
         {
           "_id": "fe663862-7045-49aa-be70-f21fe386cd15",
           "_type": "ConsolidatedCharacteristicValue",
-          "Aggregation": "Mean value",
           "CriterionType": "Variable/Quantitative",
           "Property": "Yield Strength",
           "Rounding": "Commercial",
           "RoundingAccuracy": 1,
           "Symbol": "Rp0.2",
           "Unit": "MPa",
-          "Value": 250
+          "Value": 250,          
+          "SingleResultIds": [
+            "977a8762-482b-48a2-884b-1745ccb91fba",
+            "54f0a269-3eaa-4f0c-a6b1-c6788b137036",
+            "01ba4ab4-c837-4e4e-9e8e-9cc1f0c39399"
+          ]
         },
-        {
+         {
           "_id": "365d78e0-f2d1-41e0-87bc-ad2d473dbfe5",
           "_type": "ConsolidatedCharacteristicValue",
           "Aggregation": "Mean value",
@@ -1235,7 +1233,12 @@
           "RoundingAccuracy": 1,
           "Symbol": "Rm",
           "Unit": "MPa",
-          "Value": 352
+          "Value": 352,
+          "SingleResultIds": [
+            "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
+            "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
+            "00000000-63ef-a8d9-63dc-65a5b4c34f6e"
+          ]
         },
         {
           "_id": "1d021954-cf83-4db3-b213-3cf5357e5820",
@@ -1247,7 +1250,12 @@
           "RoundingAccuracy": 0,
           "Symbol": "A50",
           "Unit": "%",
-          "Value": 33
+          "Value": 33,
+          "SingleResultIds": [
+            "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
+            "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
+            "00000000-63ef-a8d9-63dc-65a5b4c34f6e"
+          ]
         },
         {
           "_id": "00000000-63ef-a8d9-63dc-65a5b4c22222",
@@ -1259,7 +1267,12 @@
           "RoundingAccuracy": 1,
           "Symbol": "Ag",
           "Unit": "%",
-          "Value": 50.3
+          "Value": 50.3,
+          "SingleResultIds": [
+            "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
+            "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
+            "00000000-63ef-a8d9-63dc-65a5b4c34f6e"
+          ]
         }
       ],
       "TargetCharacteristicValues": [
@@ -1734,7 +1747,7 @@
           "Designation": "Tensile testing",
           "SingleResults": [
             {
-              "_id": "977a8762-482b-48a2-884b-1745ccb91fba",
+              "_id": "54f0a269-3eaa-4f0c-a6b1-c6788b137036",
               "_type": "SingleResultPoint",
               "ConsolidatedValueID": "fe663862-7045-49aa-be70-f21fe386cd15",
               "Property": "Yield Strength",
@@ -2051,7 +2064,7 @@
           "Designation": "Tensile testing",
           "SingleResults": [
             {
-              "_id": "977a8762-482b-48a2-884b-1745ccb91fba",
+              "_id": "01ba4ab4-c837-4e4e-9e8e-9cc1f0c39399",
               "_type": "SingleResultPoint",
               "ConsolidatedValueID": "fe663862-7045-49aa-be70-f21fe386cd15",
               "Property": "Yield Strength",
