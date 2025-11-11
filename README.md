@@ -5,4 +5,4 @@
 - Schema: [VDA_231-301_EN_10204_2004_Certificate_3.1.schema.json](./VDA_231-301_EN_10204_2004_Certificate_3.1.schema.json)
 - Example test report JSON: [VDA_231-301_EN_10204_2004_Certificate_3.1.example.json](./VDA_231-301_EN_10204_2004_Certificate_3.1.example.json)
 - Standard source: https://www.dinmedia.de/en/standard/din-en-10204/59682782
-- Version: 0.0.1
+- Version: 0.2.0
