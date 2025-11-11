@@ -852,7 +852,7 @@
       "if": {
         "properties": {
           "TestType": {
-            "const": "Optische Emmissions Spektralanalyse"
+            "const": "Optical Emission Spectroscopy"
           }
         }
       },
@@ -863,7 +863,7 @@
         "if": {
           "properties": {
             "TestType": {
-              "const": "Method A"
+              "const": "Tensile testing"
             }
           }
         },

@@ -1,7 +1,7 @@
 {
   "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
   "_type": "TestingProject",
-  "_schemaVersion": "0.1.1",
+  "_schemaVersion": "0.2.0",
   "Signatory": "My signature",
   "Client": {
     "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
@@ -278,7 +278,7 @@
                   }
                 ]
               },
-              "Designation": "Optische Emmissions Spektralanalyse",
+              "Designation": "Optical Emission Spectroscopy",
               "Location": "Room 34",
               "MeasurementSetup": {
                 "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
@@ -306,7 +306,7 @@
             }
           ],
           "Numerator": 1,
-          "Designation": "Optische Emmissions Spektralanalyse",
+          "Designation": "Optical Emission Spectroscopy",
           "SingleResults": {
             "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
             "_type": "InformationSet",
@@ -567,7 +567,7 @@
                   }
                 ]
               },
-              "Designation": "Optische Emmissions Spektralanalyse",
+              "Designation": "Optical Emission Spectroscopy",
               "Location": "Room 34",
               "MeasurementSetup": {
                 "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
@@ -595,7 +595,7 @@
             }
           ],
           "Numerator": 2,
-          "Designation": "Optische Emmissions Spektralanalyse",
+          "Designation": "Optical Emission Spectroscopy",
           "SingleResults": {
             "_id": "38f25acf-2d29-4ca9-b742-650578a02761",
             "_type": "InformationSet",
@@ -856,7 +856,7 @@
                   }
                 ]
               },
-              "Designation": "Optische Emmissions Spektralanalyse",
+              "Designation": "Optical Emission Spectroscopy",
               "Location": "Room 34",
               "MeasurementSetup": {
                 "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
@@ -884,7 +884,7 @@
             }
           ],
           "Numerator": 3,
-          "Designation": "Optische Emmissions Spektralanalyse",
+          "Designation": "Optical Emission Spectroscopy",
           "SingleResults": {
             "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
             "_type": "InformationSet",
@@ -1121,7 +1121,7 @@
           }
         }
       ],
-      "TestType": "Optische Emmissions Spektralanalyse",
+      "TestType": "Optical Emission Spectroscopy",
       "NumberOfExecutions": 3,
       "PredecessorId": null,
       "Specification": {
@@ -1211,13 +1211,14 @@
           "_id": "fe663862-7045-49aa-be70-f21fe386cd15",
           "_type": "ConsolidatedCharacteristicValue",
           "CriterionType": "Variable/Quantitative",
+          "Aggregation": "Mean value",
           "Property": "Yield Strength",
           "Rounding": "Commercial",
           "RoundingAccuracy": 1,
           "Symbol": "Rp0.2",
           "Unit": "MPa",
           "Value": 250,          
-          "SingleResultIds": [
+          "SingleResultIDs": [
             "977a8762-482b-48a2-884b-1745ccb91fba",
             "54f0a269-3eaa-4f0c-a6b1-c6788b137036",
             "01ba4ab4-c837-4e4e-9e8e-9cc1f0c39399"
@@ -1234,7 +1235,7 @@
           "Symbol": "Rm",
           "Unit": "MPa",
           "Value": 352,
-          "SingleResultIds": [
+          "SingleResultIDs": [
             "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
             "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
             "00000000-63ef-a8d9-63dc-65a5b4c34f6e"
@@ -1251,7 +1252,7 @@
           "Symbol": "A50",
           "Unit": "%",
           "Value": 33,
-          "SingleResultIds": [
+          "SingleResultIDs": [
             "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
             "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
             "00000000-63ef-a8d9-63dc-65a5b4c34f6e"
@@ -1268,7 +1269,7 @@
           "Symbol": "Ag",
           "Unit": "%",
           "Value": 50.3,
-          "SingleResultIds": [
+          "SingleResultIDs": [
             "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
             "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
             "00000000-63ef-a8d9-63dc-65a5b4c34f6e"
@@ -1432,7 +1433,6 @@
             {
               "_id": "977a8762-482b-48a2-884b-1745ccb91fba",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "fe663862-7045-49aa-be70-f21fe386cd15",
               "Property": "Yield Strength",
               "Symbol": "Rp0.2",
               "Unit": "MPa",
@@ -1441,7 +1441,6 @@
             {
               "_id": "f1d89871-4550-4b6e-89fb-cd31b32da89d",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "365d78e0-f2d1-41e0-87bc-ad2d473dbfe5",
               "Property": "Tensile Strength",
               "Symbol": "Rm",
               "Unit": "MPa",
@@ -1450,7 +1449,6 @@
             {
               "_id": "6eb927ea-b4dc-4a04-b132-d12c86db2caf",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "1d021954-cf83-4db3-b213-3cf5357e5820",
               "Property": "Elongation at Fracture",
               "Symbol": "A50",
               "Unit": "%",
@@ -1459,7 +1457,6 @@
             {
               "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "00000000-63ef-a8d9-63dc-65a5b4c22222",
               "Property": "Uniform Elongation",
               "Rounding": "Commercial",
               "RoundingAccuracy": 1,
@@ -1749,7 +1746,6 @@
             {
               "_id": "54f0a269-3eaa-4f0c-a6b1-c6788b137036",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "fe663862-7045-49aa-be70-f21fe386cd15",
               "Property": "Yield Strength",
               "Symbol": "Rp0.2",
               "Unit": "MPa",
@@ -1758,7 +1754,6 @@
             {
               "_id": "f1d89871-4550-4b6e-89fb-cd31b32da89d",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "365d78e0-f2d1-41e0-87bc-ad2d473dbfe5",
               "Property": "Tensile Strength",
               "Symbol": "Rm",
               "Unit": "MPa",
@@ -1767,7 +1762,6 @@
             {
               "_id": "6eb927ea-b4dc-4a04-b132-d12c86db2caf",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "1d021954-cf83-4db3-b213-3cf5357e5820",
               "Property": "Elongation at Fracture",
               "Symbol": "A50",
               "Unit": "%",
@@ -1776,7 +1770,6 @@
             {
               "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "00000000-63ef-a8d9-63dc-65a5b4c22222",
               "Property": "Uniform Elongation",
               "Rounding": "Commercial",
               "RoundingAccuracy": 1,
@@ -2066,7 +2059,6 @@
             {
               "_id": "01ba4ab4-c837-4e4e-9e8e-9cc1f0c39399",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "fe663862-7045-49aa-be70-f21fe386cd15",
               "Property": "Yield Strength",
               "Symbol": "Rp0.2",
               "Unit": "MPa",
@@ -2075,7 +2067,6 @@
             {
               "_id": "f1d89871-4550-4b6e-89fb-cd31b32da89d",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "365d78e0-f2d1-41e0-87bc-ad2d473dbfe5",
               "Property": "Tensile Strength",
               "Symbol": "Rm",
               "Unit": "MPa",
@@ -2084,7 +2075,6 @@
             {
               "_id": "6eb927ea-b4dc-4a04-b132-d12c86db2caf",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "1d021954-cf83-4db3-b213-3cf5357e5820",
               "Property": "Elongation at Fracture",
               "Symbol": "A50",
               "Unit": "%",
@@ -2093,7 +2083,6 @@
             {
               "_id": "00000000-63ef-a8d9-63dc-65a5b4c34f6e",
               "_type": "SingleResultPoint",
-              "ConsolidatedValueID": "00000000-63ef-a8d9-63dc-65a5b4c22222",
               "Property": "Uniform Elongation",
               "Rounding": "Commercial",
               "RoundingAccuracy": 1,
@@ -2278,7 +2267,7 @@
           }
         }
       ],
-      "TestType": "Method A",
+      "TestType": "Tensile testing",
       "NumberOfExecutions": 3,
       "PredecessorId": null,
       "Specification": {
