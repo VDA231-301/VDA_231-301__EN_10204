@@ -1,18 +1,43 @@
 {
-  "$id": "https://vda231-301.github.io/schemas/EN_10204/VDA_231-301_EN_10204_2004_Certificate_3.1_v0.2.0.schema.json",
+  "$id": "https://vda231-301.github.io/schemas/EN_10204/VDA_231-301_EN_10204_2004_Certificate_3.1_v1.0.0.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "allOf": [
     {
-      "$ref": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v0.2.0.schema.json"
+      "$ref": "https://vda231-301.github.io/schemas/generic/VDA_231-301_generic_v1.0.0.schema.json"
     },
     {
       "properties": {
         "TestSeries": {
           "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/3-1_Certificate.BranchingTestSeries"
-          }
+          "minItems": 2,
+          "allOf": [
+            {
+              "contains": {
+                "$ref": "#/$defs/3-1_Composition_Certificate.TestSeries",
+                "properties": {
+                  "TestType": {
+                    "const": "Optical Emission Spectroscopy"
+                  }
+                },
+                "required": [
+                  "TestType"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "$ref": "#/$defs/3-1_Tensile_Certificate.TestSeries",
+                "properties": {
+                  "TestType": {
+                    "const": "Tensile testing"
+                  }
+                },
+                "required": [
+                  "TestType"
+                ]
+              }
+            }
+          ]
         }
       }
     }
@@ -846,34 +871,6 @@
         }
       },
       "type": "object"
-    },
-    "3-1_Certificate.BranchingTestSeries": {
-      "type": "object",
-      "if": {
-        "properties": {
-          "TestType": {
-            "const": "Optical Emission Spectroscopy"
-          }
-        }
-      },
-      "then": {
-        "$ref": "#/$defs/3-1_Composition_Certificate.TestSeries"
-      },
-      "else": {
-        "if": {
-          "properties": {
-            "TestType": {
-              "const": "Tensile testing"
-            }
-          }
-        },
-        "then": {
-          "$ref": "#/$defs/3-1_Tensile_Certificate.TestSeries"
-        },
-        "else": {
-          "$ref": "../generic/VDA_231-301_generic_v0.2.0.schema.json#/$defs/Generic.TestSeries"
-        }
-      }
     }
   }
 }
