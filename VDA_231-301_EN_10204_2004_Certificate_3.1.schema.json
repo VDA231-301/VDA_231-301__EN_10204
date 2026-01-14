@@ -1,5 +1,5 @@
 {
-  "$id": "https://vda231-301.github.io/schemas/EN_10204/VDA_231-301_EN_10204_2004_Certificate_3.1_v1.0.0.schema.json",
+  "$id": "https://vda231-301.github.io/schemas/EN_10204/VDA_231-301_EN_10204_2004_Certificate_3.1_v1.0.1.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "allOf": [
     {
@@ -12,29 +12,31 @@
           "minItems": 2,
           "allOf": [
             {
-              "contains": {
-                "$ref": "#/$defs/3-1_Composition_Certificate.TestSeries",
-                "properties": {
-                  "TestType": {
-                    "const": "Optical Emission Spectroscopy"
-                  }
+              "items": {
+                "type": "object",
+                "if": {
+                  "$ref": "#/$defs/3-1_Certificate_Composition.TestSeriesCondition"
                 },
-                "required": [
-                  "TestType"
-                ]
+                "then": {
+                  "$ref": "#/$defs/3-1_Composition_Certificate.TestSeries"
+                }
+              },
+              "contains": {
+                "$ref": "#/$defs/3-1_Certificate_Composition.TestSeriesCondition"
               }
             },
             {
-              "contains": {
-                "$ref": "#/$defs/3-1_Tensile_Certificate.TestSeries",
-                "properties": {
-                  "TestType": {
-                    "const": "Tensile testing"
-                  }
+              "items": {
+                "type": "object",
+                "if": {
+                  "$ref": "#/$defs/3-1_Certificate_Tensile.TestSeriesCondition"
                 },
-                "required": [
-                  "TestType"
-                ]
+                "then": {
+                  "$ref": "#/$defs/3-1_Tensile_Certificate.TestSeries"
+                }
+              },
+              "contains": {
+                "$ref": "#/$defs/3-1_Certificate_Tensile.TestSeriesCondition"
               }
             }
           ]
@@ -43,6 +45,22 @@
     }
   ],
   "$defs": {
+    "3-1_Certificate_Composition.TestSeriesCondition": {
+      "type": "object",
+      "properties": {
+        "TestType": {
+          "const": "Optical Emission Spectroscopy"
+        }
+      }
+    },
+    "3-1_Certificate_Tensile.TestSeriesCondition": {
+      "type": "object",
+      "properties": {
+        "TestType": {
+          "const": "Tensile testing"
+        }
+      }
+    },
     "3-1_Certificate_Composition.TestExecution": {
       "properties": {
         "_id": {
